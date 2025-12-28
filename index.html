@@ -379,7 +379,7 @@
         </div>
     </div>
 
-   <!-- 音频文件 -->
+ 
 
 <section class="hero-bg min-h-screen flex items-center pt-16">
     <div class="container mx-auto px-4 py-16 relative z-10">
@@ -480,7 +480,7 @@
     </section>
 
     <!-- Audio Element -->
-    <audio id="background-music" loop muted>
+    <audio id="background-music" loop>
         <source src="https://raw.githubusercontent.com/Beiyu-s/Spaceship/main/ADropofRed.mp3" type="audio/mpeg">
     </audio>
 
@@ -857,22 +857,20 @@
         // Music Player
         const music = document.getElementById('background-music');
         const musicStatus = document.getElementById('music-status');
-        
         function toggleMusic() {
-    const music = document.getElementById('background-music');
-    const musicStatus = document.getElementById('music-status');
-
-    if (music.paused) {
-        music.muted = false; // 解除静音
-        music.play();
-        musicStatus.textContent = 'Pause Music';
-    } else {
-        music.pause();
-        musicStatus.textContent = 'Play Music';
+            if (music.paused) {
+                music.play();
+                musicStatus.textContent = 'Pause Music';
+            } else {
+                music.pause();
+                musicStatus.textContent = 'Play Music';
     }
 }
 
         
+
+        
+
         
         // Mobile Menu Toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
