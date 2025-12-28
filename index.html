@@ -480,10 +480,6 @@
         </div>
     </section>
 
-    <!-- Audio Element -->
-    <audio id="background-music" loop>
-        <source src="https://raw.githubusercontent.com/Beiyu-s/Spaceship/refs/heads/main/ADropofRed.mp3" type="audio/mpeg">
-    </audio></audio>
 
     <!-- Experience Section -->
     <section id="experience" class="py-20 bg-black">
@@ -855,19 +851,24 @@
         // Initialize GSAP ScrollTrigger
         gsap.registerPlugin(ScrollTrigger);
         
-        // Music Player
-        const music = document.getElementById('background-music');
-        const musicStatus = document.getElementById('music-status');
-        
-        function toggleMusic() {
-            if (music.paused) {
-                music.play();
-                musicStatus.textContent = 'Pause Music';
-            } else {
-                music.pause();
-                musicStatus.textContent = 'Play Music';
-            }
-        }
+        // Music Player - 修改为使用 myAudio
+const music = document.getElementById('myAudio');  // 改为 myAudio
+const musicStatus = document.getElementById('music-status');
+
+function toggleMusic() {
+    if (music.paused) {
+        music.play().then(() => {
+            musicStatus.textContent = 'Pause Music';
+            console.log('音乐开始播放');
+        }).catch(error => {
+            console.error('播放失败:', error);
+            alert('播放失败，请点击页面任意位置后重试。');
+        });
+    } else {
+        music.pause();
+        musicStatus.textContent = 'Play Music';
+    }
+}
         
 
         
