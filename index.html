@@ -1,0 +1,1077 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEIYU YI | Music Composer &amp; Vocalist</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #0a0a0a;
+            --secondary-color: #1a1a1a;
+            --accent-color: #3b82f6;
+            --text-light: #f5f5f5;
+            --text-muted: #a0a0a0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-light);
+            background-color: var(--primary-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .nav-link {
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+
+        .skill-card {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.03);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .hero-bg {
+            background-image: url('https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/b59107e8cb284370baa94ea43ed179df~tplv-a9rns2rl98-image.image?rcl=20251228100550812529B9CEFD2385146D&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769479588&x-signature=A9pbFKrCxbtBNNK1HCUOvLr3bgg%3D');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .profile-img {
+            border: 5px solid var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .sound-wave {
+            position: relative;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sound-wave span {
+            display: inline-block;
+            width: 3px;
+            height: 100%;
+            margin: 0 2px;
+            background-color: var(--accent-color);
+            animation: sound-wave 1.2s infinite ease-in-out;
+        }
+
+        .sound-wave span:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .sound-wave span:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .sound-wave span:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .sound-wave span:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes sound-wave {
+            0%, 100% {
+                height: 20px;
+            }
+            50% {
+                height: 100%;
+            }
+        }
+
+        .role-selector {
+            background-color: var(--secondary-color);
+            border-radius: 50px;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .role-option {
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        .role-option.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .timeline-item {
+                padding-left: 20px;
+            }
+            
+            .skill-card {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* AI Feedback Section */
+        .ai-feedback {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-feedback::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--accent-color);
+        }
+
+        .ai-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: var(--secondary-color);
+            z-index: 1000;
+            padding: 2rem;
+            transition: right 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-black bg-opacity-90 z-50 py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white font-['Playfair_Display']">
+                BEIYU <span class="text-blue-500">YI</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link text-white hover:text-blue-400">ABOUT</a>
+                <a href="#experience" class="nav-link text-white hover:text-blue-400">EXPERIENCE</a>
+                <a href="#projects" class="nav-link text-white hover:text-blue-400">PROJECTS</a>
+                <a href="#skills" class="nav-link text-white hover:text-blue-400">SKILLS</a>
+                <a href="#contact" class="nav-link text-white hover:text-blue-400">CONTACT</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="menu-overlay" class="menu-overlay"></div>
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="flex justify-between items-center mb-8">
+            <a href="#" class="text-2xl font-bold text-white font-['Playfair_Display']">
+                BEIYU <span class="text-blue-500">YI</span>
+            </a>
+            <button id="close-menu-button" class="text-white focus:outline-none">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-6">
+            <a href="#about" class="nav-link text-white hover:text-blue-400 text-xl">ABOUT</a>
+            <a href="#experience" class="nav-link text-white hover:text-blue-400 text-xl">EXPERIENCE</a>
+            <a href="#projects" class="nav-link text-white hover:text-blue-400 text-xl">PROJECTS</a>
+            <a href="#skills" class="nav-link text-white hover:text-blue-400 text-xl">SKILLS</a>
+            <a href="#contact" class="nav-link text-white hover:text-blue-400 text-xl">CONTACT</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 font-['Playfair_Display']">
+                        BEIYU <span class="text-blue-500">YI</span>
+                    </h1>
+                    <h2 class="text-xl md:text-2xl mb-6 text-gray-300">
+                        Music Composer • Vocalist • Voice Artist
+                    </h2>
+                    <p class="text-lg mb-8 max-w-lg">
+                        Jazz &amp; pop vocalist, composer, and music educator based in Los Angeles. 
+                        Passionate about emotional storytelling through sound, blending vocal color with 
+                        acoustic and modern textures.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="btn-primary">
+                            <i class="fas fa-envelope mr-2"></i> Contact Me
+                        </a>
+                        <button class="btn-outline" onclick="toggleMusic()">
+                            <i class="fas fa-music mr-2"></i> <span id="music-status">Play Music</span>
+                        </button>
+                    </div>
+                    <div class="sound-wave mt-12">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/95ddb9f3a9f7414a81a3c1f35fc04bc7~tplv-a9rns2rl98-image.image?rcl=202512281017225BECD99165DCB87905F6&amp;rk3s=8e244e95&amp;rrcfp=e75484ac&amp;x-expires=1767493044&amp;x-signature=9QAuhJXkvWBQxEVyWkRCUwSL3qo%3D" alt="Beiyu Yi" class="profile-img w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl md:text-4xl text-white">ABOUT ME</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <p class="text-lg mb-6 text-gray-300">
+                        I am a musician with a background in both jazz and classical music. 
+                        My journey began with classical voice training at Hunan Institute of Science and Technology, 
+                        where I earned my first Bachelor's degree in Music Education. Later, I pursued my passion 
+                        for jazz at California State University Northridge, earning a second Bachelor's degree 
+                        in Jazz Studies.
+                    </p>
+                    <p class="text-lg mb-6 text-gray-300">
+                        My musical experiences span across various ensembles, including jazz bands, symphony orchestras, 
+                        and vocal ensembles. I've had the privilege of studying with renowned musicians like Erin Bentlage, 
+                        Lucy Nargizyan, and Mary Durst, who have helped shape my unique sound and approach to music.
+                    </p>
+                    <p class="text-lg text-gray-300">
+                        Beyond performance, I am passionate about music education and have taught piano, voice, guitar, 
+                        and music theory to students of all ages. I believe in the transformative power of music and 
+                        strive to inspire that same passion in my students.
+                    </p>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6 text-blue-400">Personal Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-blue-500 w-8"></i>
+                                <span class="text-gray-300">Los Angeles, CA</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt text-blue-500 w-8"></i>
+                                <span class="text-gray-300">626-223-0666</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-blue-500 w-8"></i>
+                                <span class="text-gray-300">Beiyuyi226@gmail.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-globe text-blue-500 w-8"></i>
+                                <span class="text-gray-300">English / Mandarin</span>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="text-xl font-bold mb-4 text-blue-400">Genres</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">Jazz</span>
+                                <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">Pop</span>
+                                <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">Classical</span>
+                                <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">Film Music</span>
+                                <span class="bg-gray-700 text-white px-3 py-1 rounded-full text-sm">Contemporary</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio Element -->
+    <audio id="background-music" loop>
+        <source src="D:\Composition\Album1\Milky Way" type="audio/mpeg">
+    </audio></audio>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl md:text-4xl text-white">EXPERIENCE</h2>
+            
+            <!-- Role Selector -->
+            <div class="role-selector mb-12">
+                <div class="role-option active" data-role="all">All</div>
+                <div class="role-option" data-role="education">Education</div>
+                <div class="role-option" data-role="performance">Performance</div>
+                <div class="role-option" data-role="teaching">Teaching</div>
+            </div>
+            
+            <!-- Timeline -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Education -->
+                <div class="timeline-item" data-category="education">
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-2 text-blue-400">B.M. Jazz Studies</h3>
+                        <h4 class="text-lg mb-4 text-gray-300">California State University Northridge</h4>
+                        <p class="text-sm text-gray-400 mb-4">2024</p>
+                        <p class="text-gray-300">Studied vocal jazz with Erin Bentlage</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-category="education">
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-2 text-blue-400">B.M. Music Education (Classical Voice)</h3>
+                        <h4 class="text-lg mb-4 text-gray-300">Hunan Institute of Science and Technology</h4>
+                        <p class="text-sm text-gray-400 mb-4">2011</p>
+                        <p class="text-gray-300">Classical voice training and music education</p>
+                    </div>
+                </div>
+                
+                <!-- Performance -->
+                <div class="timeline-item" data-category="performance">
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-2 text-blue-400">Film Score Composer</h3>
+                        <h4 class="text-lg mb-4 text-gray-300">NYFA Student Film "No Small Thing"</h4>
+                        <p class="text-sm text-gray-400 mb-4">2024</p>
+                        <p class="text-gray-300">Composed original soundtrack for the student film</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-category="performance">
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-2 text-blue-400">Vocalist</h3>
+                        <h4 class="text-lg mb-4 text-gray-300">Various Ensembles</h4>
+                        <p class="text-sm text-gray-400 mb-4">2019 - Present</p>
+                        <p class="text-gray-300">
+                            Performed with East Los Angeles Jazz band, East Los Angeles Symphony Orchestra, 
+                            Lancer Jazz Big Band, Jazzadena Vocal Ensemble, CSUN Vocal Jazz Ensemble, and more.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Teaching -->
+                <div class="timeline-item" data-category="teaching">
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-2 text-blue-400">Voice / Ensemble / Guitar / Theory Instructor</h3>
+                        <h4 class="text-lg mb-4 text-gray-300">Fantasy Music Academy</h4>
+                        <p class="text-sm text-gray-400 mb-4">2020 - Present</p>
+                        <p class="text-gray-300">Teaching private lessons and group classes</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-category="teaching">
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-2 text-blue-400">Piano / Voice Teacher</h3>
+                        <h4 class="text-lg mb-4 text-gray-300">Star Kids Learning Center</h4>
+                        <p class="text-sm text-gray-400 mb-4">2019 - 2021</p>
+                        <p class="text-gray-300">Teaching piano and voice to children</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Awards -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold mb-8 text-white">AWARDS &amp; ACHIEVEMENTS</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                        <h4 class="text-xl font-bold mb-2 text-blue-400">3rd Place – Jazz Performance Award</h4>
+                        <p class="text-gray-300">Recognized for outstanding jazz vocal performance</p>
+                    </div>
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                        <h4 class="text-xl font-bold mb-2 text-blue-400">Vocal Jazz Ensemble Award</h4>
+                        <p class="text-gray-300">For outstanding contribution to the ensemble</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl md:text-4xl text-white">SKILLS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Music & Creative Skills -->
+                <div class="skill-card">
+                    <div class="flex items-center mb-6">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/fb5c5d8a34b64b37be4de02e8b3e13d5~tplv-a9rns2rl98-image.image?rcl=20251228100550812529B9CEFD2385146D&amp;rk3s=8e244e95&amp;rrcfp=f06b921b&amp;x-expires=1769479590&amp;x-signature=asi6%2Bqz0wY6EC2A3K6bYlMFgA%2F4%3D" alt="Vocal Performance" class="w-12 h-12 mr-4">
+                        <h3 class="text-xl font-bold text-white">Vocal Performance</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Jazz Vocals</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Pop Vocals</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Classical Voice</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Vocal Arrangements</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-music text-blue-500 text-3xl mr-4"></i>
+                        <h3 class="text-xl font-bold text-white">Composition &amp; Songwriting</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Music Composition</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Songwriting</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Arrangement</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Film Scoring</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-guitar text-blue-500 text-3xl mr-4"></i>
+                        <h3 class="text-xl font-bold text-white">Instrumental Skills</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Piano</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Guitar</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Music Theory</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Ear Training</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-microphone text-blue-500 text-3xl mr-4"></i>
+                        <h3 class="text-xl font-bold text-white">Studio &amp; Technical</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Vocal Tracking</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Harmony Recording</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>GarageBand</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>MuseScore</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-chalkboard-teacher text-blue-500 text-3xl mr-4"></i>
+                        <h3 class="text-xl font-bold text-white">Teaching</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Piano Instruction</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Voice Lessons</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Guitar Teaching</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Music Theory</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-users text-blue-500 text-3xl mr-4"></i>
+                        <h3 class="text-xl font-bold text-white">Ensemble &amp; Direction</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Ensemble Direction</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Choral Conducting</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Collaborative Performance</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Live Performance</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl md:text-4xl text-white">CONTACT ME</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <p class="text-lg mb-8 text-gray-300">
+                        Interested in working together? Whether you need a vocalist, composer, or music educator,
+                        I'd love to hear about your project. Please feel free to reach out using the information below.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1 text-white">Location</h4>
+                                <p class="text-gray-300">Los Angeles, CA</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1 text-white">Phone</h4>
+                                <p class="text-gray-300">626-223-0666</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1 text-white">Email</h4>
+                                <p class="text-gray-300">Beiyuyi226@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <h4 class="text-xl font-bold mb-4 text-white">Connect With Me</h4>
+                        <div class="flex space-x-4">
+
+
+                            <a href="https://www.instagram.com/woodstoooock/" class="bg-gray-800 hover:bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300">
+                                <i class="fab fa-instagram text-white"></i>
+                            </a>
+                            <a href="https://youtu.be/fU2e2PGbOks" class="bg-gray-800 hover:bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300">
+                                <i class="fab fa-youtube text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-white font-['Playfair_Display']">
+                        BEIYU <span class="text-blue-500">YI</span>
+                    </a>
+                    <p class="text-gray-400 mt-2">Music Composer • Vocalist • Voice Artist</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row md:space-x-8 items-center">
+                    <a href="#about" class="text-gray-400 hover:text-blue-400 mb-4 md:mb-0">About</a>
+                    <a href="#experience" class="text-gray-400 hover:text-blue-400 mb-4 md:mb-0">Experience</a>
+                    <a href="#projects" class="text-gray-400 hover:text-blue-400 mb-4 md:mb-0">Projects</a>
+                    <a href="#skills" class="text-gray-400 hover:text-blue-400 mb-4 md:mb-0">Skills</a>
+                    <a href="#contact" class="text-gray-400 hover:text-blue-400">Contact</a>
+                </div>
+            </div>
+            
+            <hr class="border-gray-800 my-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">© 2023 Beiyu Yi. All rights reserved.</p>
+                
+                <div class="flex space-x-6">
+
+
+                    <a href="https://www.instagram.com/woodstoooock/" class="text-gray-500 hover:text-blue-400">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://youtu.be/fU2e2PGbOks" class="text-gray-500 hover:text-blue-400">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Music Player
+        const music = document.getElementById('background-music');
+        const musicStatus = document.getElementById('music-status');
+        
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicStatus.textContent = 'Pause Music';
+            } else {
+                music.pause();
+                musicStatus.textContent = 'Play Music';
+            }
+        }
+        
+
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        const closeMenu = () => {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+        
+        closeMenuButton.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Timeline Filtering
+        const roleOptions = document.querySelectorAll('.role-option[data-role]');
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        roleOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove active class from all options
+                roleOptions.forEach(opt => opt.classList.remove('active'));
+                
+                // Add active class to clicked option
+                option.classList.add('active');
+                
+                const selectedRole = option.getAttribute('data-role');
+                
+                // Show/hide timeline items based on selected role
+                timelineItems.forEach(item => {
+                    if (selectedRole === 'all' || item.getAttribute('data-category') === selectedRole) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // AI Analysis Role Filtering
+        const analysisRoleOptions = document.querySelectorAll('.role-option[data-analysis-role]');
+        const analysisContents = document.querySelectorAll('.analysis-content');
+        
+        analysisRoleOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove active class from all options
+                analysisRoleOptions.forEach(opt => opt.classList.remove('active'));
+                
+                // Add active class to clicked option
+                option.classList.add('active');
+                
+                const selectedRole = option.getAttribute('data-analysis-role');
+                
+                // Show/hide analysis content based on selected role
+                analysisContents.forEach(content => {
+                    if (content.getAttribute('data-role') === selectedRole) {
+                        content.classList.remove('hidden');
+                    } else {
+                        content.classList.add('hidden');
+                    }
+                });
+            });
+        });
+        
+        // Contact Form Submission
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Validate form
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Simulate form submission
+            alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // GSAP Animations
+        // Hero Section Animations
+        gsap.from('.hero-bg h1', {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            delay: 0.2
+        });
+        
+        gsap.from('.hero-bg h2', {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            delay: 0.4
+        });
+        
+        gsap.from('.hero-bg p', {
+            opacity: 0,
+            y: 20,
+            duration: 1,
+            delay: 0.6
+        });
+        
+        gsap.from('.hero-bg .btn-primary, .hero-bg .btn-outline', {
+            opacity: 0,
+            y: 20,
+            duration: 1,
+            delay: 0.8,
+            stagger: 0.2
+        });
+        
+        gsap.from('.hero-bg .profile-img', {
+            opacity: 0,
+            scale: 0.8,
+            duration: 1.2,
+            delay: 0.5
+        });
+        
+        // Section Animations
+        const sections = document.querySelectorAll('section:not(.hero-bg)');
+        
+        sections.forEach(section => {
+            gsap.from(section.querySelector('.section-title'), {
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%'
+                },
+                opacity: 0,
+                x: -50,
+                duration: 0.8
+            });
+            
+            gsap.from(section.querySelectorAll('.timeline-item, .skill-card, .project-card, .ai-feedback'), {
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 70%'
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                stagger: 0.2
+            });
+        });
+    </script>
+
+</body></html>
