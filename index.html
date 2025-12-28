@@ -380,44 +380,45 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero-bg min-h-screen flex items-center pt-16">
-        <div class="container mx-auto px-4 py-16 relative z-10">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4 font-['Playfair_Display']">
-                        BEIYU <span class="text-blue-500">YI</span>
-                    </h1>
-                    <h2 class="text-xl md:text-2xl mb-6 text-gray-300">
-                        Music Composer • Vocalist • Voice Artist
-                    </h2>
-                    <p class="text-lg mb-8 max-w-lg">
-                        Jazz &amp; pop vocalist, composer, and music educator based in Los Angeles. 
-                        Passionate about emotional storytelling through sound, blending vocal color with 
-                        acoustic and modern textures.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#contact" class="btn-primary">
-                            <i class="fas fa-envelope mr-2"></i> Contact Me
-                        </a>
-                        <button class="btn-outline" onclick="toggleMusic()">
-                            <i class="fas fa-music mr-2"></i> <span id="music-status">Play Music</span>
-                        </button>
-                    </div>
-                    <div class="sound-wave mt-12">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+   <!-- 音频文件 -->
+<audio id="myAudio" src="audio/Milky Way.wav"></audio>
+
+<section class="hero-bg min-h-screen flex items-center pt-16">
+    <div class="container mx-auto px-4 py-16 relative z-10">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 font-['Playfair_Display']">
+                    BEIYU <span class="text-blue-500">YI</span>
+                </h1>
+                <h2 class="text-xl md:text-2xl mb-6 text-gray-300">
+                    Music Composer • Vocalist • Voice Artist
+                </h2>
+                <p class="text-lg mb-8 max-w-lg">
+                    Jazz & pop vocalist, composer, and music educator based in Los Angeles...
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-envelope mr-2"></i> Contact Me
+                    </a>
+                    <!-- 播放音乐按钮 -->
+                    <button class="btn-outline" onclick="toggleMusic()">
+                        <i class="fas fa-music mr-2"></i> <span id="music-status">Play Music</span>
+                    </button>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/95ddb9f3a9f7414a81a3c1f35fc04bc7~tplv-a9rns2rl98-image.image?rcl=202512281017225BECD99165DCB87905F6&amp;rk3s=8e244e95&amp;rrcfp=e75484ac&amp;x-expires=1767493044&amp;x-signature=9QAuhJXkvWBQxEVyWkRCUwSL3qo%3D" alt="Beiyu Yi" class="profile-img w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-2xl">
+                <div class="sound-wave mt-12">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="..." alt="Beiyu Yi" class="profile-img w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-2xl">
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gray-900">
