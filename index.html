@@ -852,165 +852,21 @@
     <!-- JavaScript -->
     <script>
         // Initialize GSAP ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
-
-// Music Player with Sound Wave Animation
-const music = document.getElementById('background-music');
-const musicButton = document.querySelector('.btn-outline');
-const musicStatus = document.getElementById('music-status');
-const soundWaveSpans = document.querySelectorAll('.sound-wave span');
-
-// 控制音浪动画
-function startWaveAnimation() {
-    soundWaveSpans.forEach(span => span.style.animationPlayState = 'running');
-}
-
-function stopWaveAnimation() {
-    soundWaveSpans.forEach(span => span.style.animationPlayState = 'paused');
-}
-
-// 播放 / 暂停音乐
-function toggleMusic() {
-    if (music.paused) {
-        music.play().then(() => {
-            musicStatus.textContent = 'Pause Music';
-            startWaveAnimation();
-        }).catch(err => {
-            console.warn('Playback blocked. Click anywhere to resume.', err);
-            const resumePlayback = () => {
-                music.play().then(() => {
-                    musicStatus.textContent = 'Pause Music';
-                    startWaveAnimation();
-                }).catch(err => console.error(err));
-                document.body.removeEventListener('click', resumePlayback);
-            };
-            document.body.addEventListener('click', resumePlayback);
-        });
-    } else {
-        music.pause();
-        musicStatus.textContent = 'Play Music';
-        stopWaveAnimation();
-    }
-}
-
-// 初始暂停音浪动画
-stopWaveAnimation();
-
-// 按钮点击事件
-musicButton.addEventListener('click', toggleMusic);
-
-// Mobile Menu Toggle
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const closeMenuButton = document.getElementById('close-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
-const menuOverlay = document.getElementById('menu-overlay');
-const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-
-mobileMenuButton.addEventListener('click', () => {
-    mobileMenu.classList.add('active');
-    menuOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-});
-
-const closeMenu = () => {
-    mobileMenu.classList.remove('active');
-    menuOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-};
-
-closeMenuButton.addEventListener('click', closeMenu);
-menuOverlay.addEventListener('click', closeMenu);
-mobileMenuLinks.forEach(link => link.addEventListener('click', closeMenu));
-
-// Smooth Scrolling for Navigation Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Music Player
+        const music = document.getElementById('background-music');
+        const musicStatus = document.getElementById('music-status');
+        
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicStatus.textContent = 'Pause Music';
+            } else {
+                music.pause();
+                musicStatus.textContent = 'Play Music';
+            }
         }
-    });
-});
-
-// Back to Top Button
-const backToTopButton = document.getElementById('back-to-top');
-
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        backToTopButton.classList.remove('opacity-0', 'invisible');
-        backToTopButton.classList.add('opacity-100', 'visible');
-    } else {
-        backToTopButton.classList.remove('opacity-100', 'visible');
-        backToTopButton.classList.add('opacity-0', 'invisible');
-    }
-});
-
-backToTopButton.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-// Timeline Filtering
-const roleOptions = document.querySelectorAll('.role-option[data-role]');
-const timelineItems = document.querySelectorAll('.timeline-item');
-
-roleOptions.forEach(option => {
-    option.addEventListener('click', () => {
-        roleOptions.forEach(opt => opt.classList.remove('active'));
-        option.classList.add('active');
-        const selectedRole = option.getAttribute('data-role');
-        timelineItems.forEach(item => {
-            item.style.display = (selectedRole === 'all' || item.getAttribute('data-category') === selectedRole) ? 'block' : 'none';
-        });
-    });
-});
-
-// AI Analysis Role Filtering
-const analysisRoleOptions = document.querySelectorAll('.role-option[data-analysis-role]');
-const analysisContents = document.querySelectorAll('.analysis-content');
-
-analysisRoleOptions.forEach(option => {
-    option.addEventListener('click', () => {
-        analysisRoleOptions.forEach(opt => opt.classList.remove('active'));
-        option.classList.add('active');
-        const selectedRole = option.getAttribute('data-analysis-role');
-        analysisContents.forEach(content => {
-            content.classList.toggle('hidden', content.getAttribute('data-role') !== selectedRole);
-        });
-    });
-});
-
-// Contact Form Submission
-const contactForm = document.getElementById('contact-form');
-
-contactForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-    if (!name || !email || !subject || !message) {
-        alert('Please fill in all fields');
-        return;
-    }
-    alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
-    contactForm.reset();
-});
-
-// GSAP Animations for Hero Section
-gsap.from('.hero-bg h1', {opacity: 0, y: 50, duration: 1, delay: 0.2});
-gsap.from('.hero-bg h2', {opacity: 0, y: 30, duration: 1, delay: 0.4});
-gsap.from('.hero-bg p', {opacity: 0, y: 20, duration: 1, delay: 0.6});
-gsap.from('.hero-bg .btn-primary, .hero-bg .btn-outline', {opacity: 0, y: 20, duration: 1, delay: 0.8, stagger: 0.1});
-
         
 
         
@@ -1218,5 +1074,6 @@ gsap.from('.hero-bg .btn-primary, .hero-bg .btn-outline', {opacity: 0, y: 20, du
     </script>
 
 </body></html>
+
 
 
